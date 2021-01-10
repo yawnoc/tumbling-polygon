@@ -44,13 +44,20 @@ function ...
   plot (xCircleValues, yCircleValues, "k");
   
   # Initialise plot handles (for removing plotted trajectories)
-  frameCount = length (phiValues);
   vertexCount = columns (zVectorValues);
   trajectoryPlotHandle = zeros (vertexCount, 1);
   polygonFillHandle = zeros (1, 1);
   
-  # Loop over frames (TODO: add argument for sampling rate)
-  for frameIndex = 1 : frameCount
+  # Skip frames in the animation for a reasonable file size
+  # (but keep all frames for plotting the vertex trajectories)
+  frameCount = length (phiValues);
+  reasonableFrameCount = 36;
+  indexStep = frameCount / reasonableFrameCount;
+  reasonableFrameIndices = unique (round (1 : indexStep : frameCount));
+  reasonablePhiValues = phiValues(reasonableFrameIndices);
+  
+  # Loop over frames
+  for frameIndex = reasonableFrameIndices
     
     # Current phi
     phi = phiValues(frameIndex);
@@ -92,7 +99,7 @@ function ...
   
   # Convert PDF to GIF
   angularSpeed = 2; # radians per second
-  frameDurations = diff(phiValues) / angularSpeed;
+  frameDurations = diff(reasonablePhiValues) / angularSpeed;
   frameDurations = [frameDurations; mean(frameDurations)];
   frames = imread (outputNamePDF, "Index", "all");
   imwrite (frames, outputNameGIF, "DelayTime", frameDurations);
