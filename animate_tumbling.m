@@ -96,6 +96,9 @@ function ...
   frames = imread (outputNamePDF, "Index", "all");
   imwrite (frames, outputNameGIF, "DelayTime", frameDurations);
   
+  # Close figure
+  close (figureHandle);
+  
 endfunction
 
 
