@@ -16,6 +16,9 @@ function figureHandle = ...
   
   # Assign figure handle
   figureHandle = figure;
+  axis nolabel;
+  axis off;
+  axis ([-1, 1, -1, 1]);
   hold on;
   
   # Plot unit circle (tumbling region boundary)
