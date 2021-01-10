@@ -80,7 +80,7 @@ function ...
     polygonFillHandle = fill (xValuesPolygon, yValuesPolygon, "k");
     
     # Append current frame to PDF
-    print (outputNamePDF, "-append", "-S120,120");
+    print (outputNamePDF, "-append", "-S96,96");
     
     # Delete trajectories and polygon for next frame
     for vertexIndex = 1 : vertexCount
