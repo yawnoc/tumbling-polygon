@@ -14,7 +14,7 @@ function [phiMin, phiMax] = parse_phi_range (phiRange)
   
   phiRangeSize = size (phiRange);
   
-  if (phiRangeSize == [1, 2])
+  if (isequal (phiRangeSize, [1, 2]))
     
     phiMin = phiRange(1);
     phiMax = phiRange(2);
@@ -22,7 +22,7 @@ function [phiMin, phiMax] = parse_phi_range (phiRange)
       error ("phiRange [phiMin, phiMax] must have phiMin < phiMax");
     endif
     
-  elseif (phiRangeSize == [1])
+  elseif (isequal (phiRangeSize, [1, 1]))
     
     phiMin = 0;
     phiMax = phiRange;
