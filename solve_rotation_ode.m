@@ -23,7 +23,11 @@ function [phiValues, zVectorValues, eventIndex] = ...
   odeRHS = @(phi, zVector) i * (zVector - pivot);
   odeStructure = odeset ("Events", eventFunction);
   
+  warning ("off", "integrate_adaptive:unexpected_termination");
+  
   [phiValues, zVectorValues, ~, ~, eventIndex] = ...
     ode45 (odeRHS, [phiMin, phiMax], zVectorInitial, odeStructure);
+  
+  warning ("on", "integrate_adaptive:unexpected_termination");
   
 endfunction
