@@ -21,7 +21,7 @@ function zVectorInitial = parse_initial_vertices (initialVertices)
     zVectorInitial = initialVertices;
   elseif (columnCount == 2)
     if (isreal (initialVertices))
-      zVectorInitial = initialVertices * [1; i];
+      zVectorInitial = real_rows_to_complex (initialVertices);
     else
       error ("initialVertices as a matrix must be real-valued");
     endif
