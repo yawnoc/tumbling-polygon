@@ -8,6 +8,10 @@ function [phiMin, phiMax] = parse_phi_range (phiRange)
     error ("phiRange must be numeric");
   endif
   
+  if (! isreal (phiRange))
+    error ("phiRange must be real-valued");
+  endif
+  
   phiRangeSize = size (phiRange);
   
   if (phiRangeSize == [1, 2])
@@ -35,6 +39,7 @@ function [phiMin, phiMax] = parse_phi_range (phiRange)
 endfunction
 
 %!error parse_phi_range ("not numeric");
+%!error parse_phi_range ([1, i]);
 %!error parse_phi_range ([10, 1]);
 %!error parse_phi_range ([10, 10]);
 %!error parse_phi_range ([-1]);
