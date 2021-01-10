@@ -1,8 +1,8 @@
-# [phiValues, zVectorValues] = tumbling_trajectory (
-#   initialVertices, phiRange, initialPivot, regionFunction
-# )
+# [phiValues, zVectorValues] = ...
+#   tumbling_trajectory (initialVertices, phiRange, initialPivot)
 # 
-# Determine trajectory zVector == zVector (phi) for a tumbling polygon.
+# Determine trajectory zVector == zVector (phi)
+# for a tumbling polygon in the unit disk.
 # Here, zVector is a complex column vector representing the vertices,
 # while phi is the angle through which the polygon has rotated.
 # 
@@ -21,22 +21,12 @@
 #   (a) a real pair [x, y],
 #   (b) a complex scalar [z], or
 #   (c) the string "first", for the first vertex of initialVertices.
-# 
-# regionFunction (default: @(z) abs (z) - 1)
-#   Function f == f (z) such that
-#     f (z) < 0 represents the interior of the tumbling region,
-#     f (z) == 0 represents the boundary, and
-#     f (z) > 0 represents the exterior.
-#   The tumbling region is assumed to be convex.
-#   Collisions of the polygon with the boundary are handled
-#   by detecting f (z) increasing past 0.
 
 function [phiValues, zVectorValues] = ...
   tumbling_trajectory ( ...
     initialVertices, ...
     phiRange = 2 * pi, ...
-    initialPivot = "first", ...
-    regionFunction = @(z) abs (z) - 1 ...
+    initialPivot = "first" ...
   )
   
   # Parse input arguments
