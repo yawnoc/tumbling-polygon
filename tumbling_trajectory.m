@@ -42,5 +42,6 @@ function [phiValues, zVectorValues] = ...
   # Parse input arguments
   zVectorInitial = parse_initial_vertices (initialVertices);
   [phiMin, phiMax] = parse_phi_range (phiRange);
+  pInitial = parse_initial_pivot (initialPivot, zVectorInitial);
   
 endfunction
