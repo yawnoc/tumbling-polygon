@@ -18,16 +18,16 @@ function [phiMin, phiMax] = parse_phi_range (phiRange)
     
     phiMin = phiRange(1);
     phiMax = phiRange(2);
-    if (! (phiMin < phiMax))
-      error ("phiRange [phiMin, phiMax] must have phiMin < phiMax");
+    if (! (phiMin <= phiMax))
+      error ("phiRange [phiMin, phiMax] must have phiMin <= phiMax");
     endif
     
   elseif (isequal (phiRangeSize, [1, 1]))
     
     phiMin = 0;
     phiMax = phiRange;
-    if (! (phiMax > 0))
-      error ("phiRange [phiMax] must have phiMax > 0");
+    if (! (phiMax >= 0))
+      error ("phiRange [phiMax] must have phiMax >= 0");
     endif
     
   else
@@ -41,9 +41,7 @@ endfunction
 %!error parse_phi_range ("not numeric");
 %!error parse_phi_range ([1, i]);
 %!error parse_phi_range ([10, 1]);
-%!error parse_phi_range ([10, 10]);
 %!error parse_phi_range ([-1]);
-%!error parse_phi_range ([0]);
 %!error parse_phi_range (ones (2, 2));
 %!error parse_phi_range ([1; 2; 3; 4; 5]);
 
