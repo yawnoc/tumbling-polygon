@@ -39,6 +39,7 @@ function [phiValues, zVectorValues] = ...
     regionFunction = @(z) abs (z) - 1 ...
   )
   
+  # Parse input arguments
   zVectorInitial = parse_initial_vertices (initialVertices);
   [phiMin, phiMax] = parse_phi_range (phiRange);
   
