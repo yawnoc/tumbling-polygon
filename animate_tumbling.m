@@ -91,7 +91,8 @@ function ...
   endfor
   
   # Convert PDF to GIF
-  frameDurations = diff(phiValues);
+  angularSpeed = 2; # radians per second
+  frameDurations = diff(phiValues) / angularSpeed;
   frameDurations = [frameDurations; mean(frameDurations)];
   frames = imread (outputNamePDF, "Index", "all");
   imwrite (frames, outputNameGIF, "DelayTime", frameDurations);
