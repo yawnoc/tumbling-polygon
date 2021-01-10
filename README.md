@@ -4,6 +4,10 @@ This is a GNU Octave port of [my answer (237847)][mse-a] to
 ["Simplifying code that displays a square rolling inside a circle"][mse-q]
 on Mathematica Stack Exchange.
 
+````octave
+demo animate_tumbling
+````
+
 ![Animation of a polygon tumbling in a circle](demo.gif)
 
 Licensed under "MIT No Attribution" (MIT-0), see [LICENSE].
