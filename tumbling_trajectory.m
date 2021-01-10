@@ -74,12 +74,19 @@ function [phiValues, zVectorValues] = ...
 endfunction
 
 
+function valueVector = unit_disk_region_function (zVector)
+  
+  valueVector = abs (zVector) - 1;
+  
+endfunction
+
+
 function [valueVector, isTerminal, direction] = ...
   collision_event_function (phi, zVector)
   
   zVectorSize = size (zVector);
   
-  valueVector = abs (zVector) - 1;
+  valueVector = unit_disk_region_function (zVector);
   isTerminal = true (zVectorSize);
   direction = +1 * ones (zVectorSize);
   
