@@ -21,7 +21,8 @@ function [phiValues, zVectorValues, eventIndex] = ...
   endif
   
   odeRHS = @(phi, zVector) i * (zVector - pivot);
-  odeStructure = odeset ("Events", eventFunction);
+  maxStep = deg2rad (5);
+  odeStructure = odeset ("Events", eventFunction, "MaxStep", maxStep);
   
   warning ("off", "integrate_adaptive:unexpected_termination");
   
