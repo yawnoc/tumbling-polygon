@@ -1,9 +1,9 @@
-# pInitial = parse_initial_pivot (initialPivot, zVectorInitial)
+# pivot = parse_initial_pivot (initialPivot, zVectorInitial)
 # 
 # Parse initialPivot argument of tumbling_trajectory.
 # Here, zVectorInitial is the result of parse_initial_vertices.
 
-function pInitial = parse_initial_pivot (initialPivot, zVectorInitial = 0)
+function pivot = parse_initial_pivot (initialPivot, zVectorInitial = 0)
   
   initialPivotErrorString = ...
     "initialPivot must be \"first\" or of the form [x, y] or [z]";
@@ -15,14 +15,14 @@ function pInitial = parse_initial_pivot (initialPivot, zVectorInitial = 0)
     if (isequal (initialPivotSize, [1, 2]))
       
       if (isreal (initialPivot))
-        pInitial = real_rows_to_complex (initialPivot);
+        pivot = real_rows_to_complex (initialPivot);
       else
         error ("initialPivot as a pair [x, y] must be real-valued");
       endif
       
     elseif (isequal (initialPivotSize, [1, 1]))
       
-      pInitial = initialPivot;
+      pivot = initialPivot;
       
     else
       
@@ -34,7 +34,7 @@ function pInitial = parse_initial_pivot (initialPivot, zVectorInitial = 0)
     
     if (ischar (initialPivot) && strcmpi (initialPivot, "first"))
       
-      pInitial = zVectorInitial(1);
+      pivot = zVectorInitial(1);
       
     else
       
