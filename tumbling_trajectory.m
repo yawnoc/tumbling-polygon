@@ -39,4 +39,6 @@ function [phiValues, zVectorValues] = ...
     regionFunction = @(z) abs (z) - 1 ...
   )
   
+  zVectorInitial = parse_initial_vertices (initialVertices);
+  
 endfunction
