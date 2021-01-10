@@ -34,6 +34,16 @@ function [phiValues, zVectorValues] = ...
   [phiMin, phiMax] = parse_phi_range (phiRange);
   pivot = parse_initial_pivot (initialPivot, zVectorInitial);
   
+  # Check whether positions of the vertices are sensible
+  allInDisk = all (unit_disk_region_function (zVectorInitial) <= 0);
+  anyStrictlyInDisk = any (unit_disk_region_function (zVectorInitial) < 0);
+  if (! allInDisk)
+    warning ("some vertices strictly outside unit disk");
+  endif
+  if (! anyStrictlyInDisk)
+    warning ("no vertices strictly within unit disk");
+  endif
+  
   # Initialise solution data
   phiValues = [];
   zVectorValues = [];
