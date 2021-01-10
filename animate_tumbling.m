@@ -104,4 +104,5 @@ endfunction
 
 
 %!demo
-%!  animate_tumbling ("demo.gif", [0.8; -0.2; -0.2 - 0.5i], 5);
+%!  initialVertices = [0.8; 0.7i; -0.6 - 0.6i; 0.2 - 0.9i];
+%!  animate_tumbling ("demo.gif", initialVertices, 2 * pi);
