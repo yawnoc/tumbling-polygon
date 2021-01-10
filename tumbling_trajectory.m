@@ -40,5 +40,6 @@ function [phiValues, zVectorValues] = ...
   )
   
   zVectorInitial = parse_initial_vertices (initialVertices);
+  [phiMin, phiMax] = parse_phi_range (phiRange);
   
 endfunction
