@@ -66,7 +66,7 @@ function [phiValues, zVectorValues] = ...
     phiEnd = phiValuesNew(end);
     
     # Check whether endpoint of phiRange is reached
-    if (phiEnd == phiMax)
+    if (phiEnd >= phiMax)
       break;
     endif
     
