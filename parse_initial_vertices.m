@@ -8,7 +8,7 @@ function zVectorInitial = parse_initial_vertices (initialVertices)
     error ("initialVertices must be numeric");
   endif
   
-  if ndims (initialVertices) > 2
+  if (ndims (initialVertices) > 2)
     error ("initialVertices must be a column vector or matrix");
   endif
   
