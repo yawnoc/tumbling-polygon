@@ -1,6 +1,7 @@
 # figureHandle = visualise_tumbling (initialVertices, phiRange, initialPivot)
 # 
-# Visualise a tumbling polygon in the unit disk.
+# Visualise a tumbling polygon in the unit disk,
+# producing a static plot of the trajectory and final position.
 
 function figureHandle = ...
   visualise_tumbling ( ...
