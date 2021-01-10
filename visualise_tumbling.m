@@ -56,4 +56,4 @@ function figureHandle = ...
 endfunction
 
 %!demo
-%!  visualise_tumbling ([0.8; -0.2; -0.2 - 0.5i], 10)
+%!  visualise_tumbling ([0.8; -0.2; -0.2 - 0.5i], 10);
