@@ -32,6 +32,55 @@ function [phiValues, zVectorValues] = ...
   # Parse input arguments
   zVectorInitial = parse_initial_vertices (initialVertices);
   [phiMin, phiMax] = parse_phi_range (phiRange);
-  pInitial = parse_initial_pivot (initialPivot, zVectorInitial);
+  pivot = parse_initial_pivot (initialPivot, zVectorInitial);
+  
+  # Initialise solution data
+  phiValues = [];
+  zVectorValues = [];
+  phiEnd = -inf;
+  
+  # Loop
+  while (true)
+    
+    # Solve rotation ODE up to the next collision
+    [phiValuesNew, zVectorValuesNew, collisionIndex] = ...
+      solve_rotation_ode (
+        pivot, zVectorInitial,
+        phiMin, phiMax,
+        @collision_event_function
+      );
+    
+    # Update solution data
+    phiValues = [phiValues(1:end-1); phiValuesNew];
+    zVectorValues = [zVectorValues(1:end-1,:); zVectorValuesNew];
+    phiEnd = phiValuesNew(end);
+    
+    # Check whether endpoint of phiRange is reached
+    if (phiEnd == phiMax)
+      break;
+    endif
+    
+    # Update initial zVector
+    zVectorInitial = zVectorValuesNew(end,:);
+    
+    # Update pivot
+    pivot = zVectorInitial(collisionIndex);
+    
+    # Update phiRange startpoint
+    phiMin = phiEnd;
+    
+  endwhile
+  
+endfunction
+
+
+function [valueVector, isTerminal, direction] = ...
+  collision_event_function (phi, zVector)
+  
+  zVectorSize = size (zVector);
+  
+  valueVector = abs (zVector) - 1;
+  isTerminal = true (zVectorSize);
+  direction = +1 * ones (zVectorSize);
   
 endfunction
