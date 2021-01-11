@@ -59,6 +59,14 @@ function ...
   # Loop over frames
   for frameIndex = reasonableFrameIndices
     
+    # Extract current position of polygon
+    zValuesPolygon = zVectorValues(frameIndex,:);
+    xValuesPolygon = real (zValuesPolygon);
+    yValuesPolygon = imag (zValuesPolygon);
+    
+    # Fill polygon
+    polygonFillHandle = fill (xValuesPolygon, yValuesPolygon, "k");
+    
     # Current phi
     phi = phiValues(frameIndex);
     
@@ -77,14 +85,6 @@ function ...
       trajectoryPlotHandle(vertexIndex) = plot (xValues, yValues);
       
     endfor
-    
-    # Extract current position of polygon
-    zValuesPolygon = zVectorValues(frameIndex,:);
-    xValuesPolygon = real (zValuesPolygon);
-    yValuesPolygon = imag (zValuesPolygon);
-    
-    # Fill polygon
-    polygonFillHandle = fill (xValuesPolygon, yValuesPolygon, "k");
     
     # Append current frame to PDF
     print (outputNamePDF, "-append", "-S96,96");
