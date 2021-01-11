@@ -38,7 +38,7 @@ function ...
   hold on;
   
   # Plot unit circle (tumbling region boundary)
-  angleValues = linspace (0, 2 * pi, 50);
+  angleValues = linspace (0, 2 * pi, 180);
   xCircleValues = cos (angleValues);
   yCircleValues = sin (angleValues);
   plot (xCircleValues, yCircleValues, "k");
