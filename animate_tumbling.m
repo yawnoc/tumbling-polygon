@@ -70,6 +70,9 @@ function ...
     # Current phi
     phi = phiValues(frameIndex);
     
+    # Reset plot colour
+    set (gca, "ColorOrderIndex", 1);
+    
     # Loop over vertices
     for vertexIndex = 1 : vertexCount
       
